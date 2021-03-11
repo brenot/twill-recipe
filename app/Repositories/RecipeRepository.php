@@ -16,4 +16,9 @@ class RecipeRepository extends ModuleRepository
     {
         $this->model = $model;
     }
+
+    public function allRecipes()
+    {
+        return $this->model->orderBy('title')->get();
+    }
 }
