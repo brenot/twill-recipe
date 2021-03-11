@@ -19,4 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\PageController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'recipes'], function () {
+    Route::get('/', [App\Http\Controllers\RecipeController::class, 'index'])->name('recipes.index');
+    Route::get('/{slug}', [App\Http\Controllers\RecipeController::class, 'show'])->name(
+        'recipes.show'
+    );
+});
